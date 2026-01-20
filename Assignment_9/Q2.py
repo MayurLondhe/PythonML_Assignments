@@ -1,9 +1,12 @@
 
 def ChkGreater(Value1, Value2):
+    Result = 0
     if Value1 > Value2:
-        print("Greater number is : ", Value1)
+        Result = Value1
     else:
-        print("Greater number is : ", Value2)
+        Result = Value2
+
+    return Result
 
 def main():
    No1 = 0
@@ -14,7 +17,9 @@ def main():
    print("Enter second no.")
    No2 = int(input())
    
-   ChkGreater(No1, No2)
+   ret = ChkGreater(No1, No2)
+
+   print("Greater number is : ", ret)
 
 if __name__ == "__main__":
     main()

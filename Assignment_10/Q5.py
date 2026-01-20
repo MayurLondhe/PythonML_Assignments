@@ -6,7 +6,6 @@ def displayOddNo(Value1):
         if i % 2 != 0:
             print(i)
         
-    return sum
     
 
 def main():

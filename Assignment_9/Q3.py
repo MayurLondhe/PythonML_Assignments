@@ -1,7 +1,7 @@
 
 def squrt(Value1):
    Result = 0
-   Result = Value1** 0.5
+   Result = Value1 ** 2
    
    return Result
 
@@ -10,8 +10,8 @@ def main():
    
    print("Enter no.")
    No1 = int(input())
-   SquareRoot = squrt(No1)
-   print("Square root of given number is : ", SquareRoot)
+   Square = squrt(No1)
+   print("Square of given number is : ", Square)
    
 
 if __name__ == "__main__":

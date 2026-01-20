@@ -1,21 +1,24 @@
 
-def getRevDigit(Value1):
-    result = ""
-    for i in range(len(Value1)-1,-1,-1):
-        result = result + str(Value1[i])
+def revNumber(Value):
 
-    return result
-        
+    Rev = 0
 
+    i = Value
+
+    while i > 0:
+
+        Rev = (Rev * 10) + i % 10
+        i = i // 10
+
+    return Rev
 
 def main():
-    
-    No = input("Enter Number : ")
 
-    ret = getRevDigit(No)
+    No = int(input("Enter a number for reverse : "))
 
-    print(ret)
-    
-    
+    No = revNumber(No)
+
+    print(No)
+
 if __name__ == "__main__":
     main()

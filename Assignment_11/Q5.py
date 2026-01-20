@@ -1,22 +1,23 @@
+from Q4 import revNumber
+
 
 def checkPalindrome(Value1):
-    RevValue = ""
-    ret = False
-    for i in range(len(Value1)-1,-1,-1):
-        RevValue = RevValue + str(Value1[i])
+    Result = False
 
-    if(RevValue == Value1):
-        ret = True
+    revNo = revNumber(Value1)
+
+    if(revNo == Value1):
+        Result = True
     else:
-        ret = False
+        Result = False
 
-    return ret
+    return Result
         
 
 
 def main():
     
-    No = input("Enter Number : ")
+    No = int(input("Enter Number : "))
 
     ret = checkPalindrome(No)
     

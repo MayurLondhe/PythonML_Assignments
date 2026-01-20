@@ -6,11 +6,10 @@ def displayEvenNo(Value1):
         if i % 2 == 0:
             print(i)
         
-    return sum
     
 
 def main():
-    No1 = int(input("Enter number for multiplication table : "))
+    No1 = int(input("Enter a number : "))
     displayEvenNo(No1)
 
 if __name__ == "__main__":
