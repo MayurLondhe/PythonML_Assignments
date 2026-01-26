@@ -1,8 +1,4 @@
 from Q2 import lstOfEven
-from functools import reduce
-
-countOfEvenNo = lambda No1, No2 : No1 + No2
-
 
 def main():
 
@@ -10,9 +6,7 @@ def main():
 
     FData = list(filter(lstOfEven, Data))
 
-    RData = reduce(countOfEvenNo,FData)
-
-    print(RData)
+    print(len(FData))
 
 if __name__ == "__main__":
     main()
