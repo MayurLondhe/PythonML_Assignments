@@ -1,12 +1,3 @@
-
-fobj = open("Demo1.txt","r")
-
-Data = fobj.read()
-
-Data = Data.split(" ")
-
-print(Data)
-
 import os
 import sys
 
@@ -42,7 +33,7 @@ def main():
 
         print(f"{StringName} appears in {FileName1} is {ret} times.")
     else:
-        print("Sum of ther file is not exixts.")
+        print("Sum of the file is not exixts.")
     
 
 if(__name__ == "__main__"):
