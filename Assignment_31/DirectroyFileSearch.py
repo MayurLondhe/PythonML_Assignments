@@ -43,6 +43,7 @@ def directroyFileSearch(DirectoryName, Extension):
     fobj.write("This log file is created at : "+timestamp+"\n")
     fobj.write(Border+"\n")
 
+
     fobj.close()
 
     
