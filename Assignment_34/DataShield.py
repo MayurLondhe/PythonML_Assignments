@@ -5,6 +5,8 @@ import schedule
 import shutil
 import hashlib
 import zipfile
+import smtplib
+from email.message import EmailMessage
 
 def make_zip(Folder):
     timestamp = time.strftime("%Y-%m-%d_%H-%M-%S")
@@ -73,28 +75,90 @@ def BackupFiles(Source, Destination):
 
 def MarvellousDataSchieldStart(Source = "Data"):
     Border = "-"*50
-    
+    timestamp = time.strftime("%Y-%m-%d_%H-%M-%S")
+
+    FileName = "DataShield_%s.log" %timestamp
     BackupName = "MarvellousBackup"
 
-    print(Border)
-    print("Backup process started successfully at : ", time.ctime())
-    print(Border)
+    fobj = open(FileName,"w")
+    fobj.write(Border+"\n")
+    fobj.write("----- Marvellous Data shield system ----\n")
+    fobj.write("Log created at : "+ time.ctime() + "\n")
+    fobj.write(Border+"\n")
+
+    fobj.write(Border+"\n")
+    fobj.write(f"Backup process started successfully at : {time.ctime()} \n")
+    fobj.write(Border+"\n")
 
     files = BackupFiles(Source, BackupName)
 
     zip_file = make_zip(BackupName)
 
-    print(Border)
-    print("Backup completed successfully")
-    print("Files copied : ", len(files))
-    print("Zip file gets created : ", zip_file)
-    print(Border)
+    fobj.write(Border+"\n")
+    fobj.write("Backup completed successfully\n")
+    fobj.write(f"Files copied : {len(files)} \n")
+    fobj.write(f"Zip file gets created : {zip_file} \n")
+    fobj.write(Border+"\n")
+
+    fobj.close()
+    sendMail(FileName, zip_file)
+
+def Marvellous_send_mail(sender, app_password, receiver, subject, FileName, Zip_File_Name):
+
+    #Step 1 : Create Email object
+    msg = EmailMessage()
+
+    #Step 2 : Set mail headers
+    msg["From"] = sender
+    msg["To"] = receiver
+    msg["Subject"] = subject
+
+    #Step 3 : Add mail headers
+    msg.set_content(f"Please find attached DataShield Log file \n and Backup zip file is created {Zip_File_Name}.")
+    filename = os.path.basename(FileName)
+
+    with open(FileName, "rb") as f:
+        msg.add_attachment(f.read(),
+                        maintype="text",
+                        subtype="plain",
+                        filename=filename)
+
+    #Step 4 : Create SMPT SSL connection manually
+    smtp = smtplib.SMTP_SSL("smtp.gmail.com",465)
+
+    #Step 5 : Login Using Gmail + App Password
+    smtp.login(sender, app_password)
+
+    #Step 6 : Send the email
+    smtp.send_message(msg)
+
+    #Step 7 : Close connection manually
+
+    smtp.quit()
+
+def sendMail(FileName, Zip_File_Name, EmailId = "mayurlondhe724@gmail.com"):
+    #Always use separate temporary/testing account
+    sender_email = "mayurlondhe106@gmail.com"
+
+    #App password generated from Google account
+    app_password = "my password"
+
+    #Your second account enamil for testing
+    revceiver_email = EmailId
+
+    subject = "Data Schield System Log File."
+
+
+    Marvellous_send_mail(sender_email, app_password, revceiver_email, subject, FileName, Zip_File_Name)
+
+    print("Marvellous Mail Sent Successfully.")
+
 
 def main():
     Border = "-"*50
     
     print(Border)
-    print("--------- Marvellous Data Schiled System ---------")
+    print("--------- Marvellous Data Shield System ---------")
     print(Border)
 
     if(len(sys.argv) == 2):
