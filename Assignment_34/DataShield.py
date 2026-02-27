@@ -141,7 +141,7 @@ def sendMail(FileName, Zip_File_Name, EmailId = "mayurlondhe724@gmail.com"):
     sender_email = "mayurlondhe106@gmail.com"
 
     #App password generated from Google account
-    app_password = "my password"
+    app_password = "banl paer jjoa djpz"
 
     #Your second account enamil for testing
     revceiver_email = EmailId
