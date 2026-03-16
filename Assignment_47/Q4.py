@@ -1,8 +1,8 @@
-import numpy as np
+import math
 
 def main():
     print("="*40)
-    data = [4, 6, 8, 10, 12]
+    data = [5, 7, 9, 11, 13]
 
     n = len(data)
     mean_X = 0.0
@@ -48,6 +48,15 @@ def main():
     print("Variance of dataset is : ")
     print(Variance)
     print("="*40)
+
+    standardDeviation = 0.0
+    standardDeviation = math.sqrt(Variance)
+
+    print("="*40)
+    print("Standar Deviation is : ")
+    print(standardDeviation)
+    print("="*40)
+
 
 
 if(__name__ == "__main__"):
